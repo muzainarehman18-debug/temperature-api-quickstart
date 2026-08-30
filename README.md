@@ -5,6 +5,9 @@ Built for the **FortyGuard Hackathon 2026** — *Track 1: Resilient Cities & Inf
 An automated municipal decision-support system and pedestrian microclimate explorer powered by **FortyGuard Large Temperature Model (LTM) API** layers.
 
 ---
+## 🔗 Live Demo
+Try the live dashboard here: https://governor-contacted-winning-likelihood.trycloudflare.com/
+---
 
 ## 📌 Problem & Overview
 Extreme urban heat events create severe, localized microclimate variations across city blocks. Unshaded streets, exposed asphalt corridors, and vulnerable transit infrastructure frequently experience surface temperatures **5°C to 10°C hotter** than surrounding areas. 
