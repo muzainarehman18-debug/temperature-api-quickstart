@@ -1,38 +1,46 @@
-# Urban Heat Island (UHI) Vulnerability & Cooling Center Planner
+# 🌡️ Urban Heat Island (UHI) Vulnerability & Climate Planner
 
-An automated decision-support pipeline combining FortyGuard hyper-local thermal data with community infrastructure metrics to prioritize municipal emergency heat interventions.
+Built for the **FortyGuard Hackathon 2026** — *Track 1: Resilient Cities & Infrastructure*.
 
----
-
-## 📌 Problem & Impact
-Dense urban environments experience extreme microclimate variability where concrete corridors reach dangerous surface temperatures exceeding 45°C. Traditional municipal responses rely on coarse city-wide weather station averages. 
-
-This project integrates the **FortyGuard Temperature API** to calculate a localized **Heat Vulnerability Index (HVI)**, pinpointing the top 5 critical heat risk zones to deploy emergency mobile cooling units, hydration stations, and urban canopy initiatives—reducing localized pedestrian exposure by an estimated 4–7°C.
+An automated municipal decision-support system and pedestrian microclimate explorer powered by **FortyGuard Large Temperature Model (LTM) API** layers.
 
 ---
 
-## ⚙️ Architecture & Methodology
-1. **Thermal Ingestion:** Fetches granular surface temperature layers via FortyGuard REST endpoints.
-2. **Feature Fusion:** Overlays canopy coverage deficits and transit foot-traffic exposure data.
-3. **Vulnerability Indexing:** Computes normalized HVI scores (0–100) across spatial coordinates.
-4. **Actionable Outputs:** Generates an interactive Folium geospatial dashboard and a prioritized municipal dispatch table.
+## 📌 Problem & Overview
+Extreme urban heat events create severe, localized microclimate variations across city blocks. Unshaded streets, exposed asphalt corridors, and vulnerable transit infrastructure frequently experience surface temperatures **5°C to 10°C hotter** than surrounding areas. 
+
+Cities lack granular, spatial tools to prioritize heat mitigation funding, while pedestrians lack route-level thermal intelligence to navigate safely. This project solves both challenges by:
+1. **Auditing & Ranking Heat Vulnerability:** Calculating a localized Heat Vulnerability Index (HVI) across municipal zones.
+2. **Automating Intervention Dispatch:** Mapping recommended mitigations (cooling buses, misting shelters, cool pavement coatings) based on budget tiers.
+3. **Guiding Pedestrians:** Identifying shaded street corridors, misting plazas, and public cooling waypoints.
 
 ---
 
-## 🛠️ Tech Stack
-- **Language & Runtime:** Python 3.10+, Google Colab / Jupyter
-- **API & Auth:** FortyGuard Temperature API, python-dotenv, requests
-- **Data Analysis:** pandas, numpy
-- **Geospatial Visualization:** folium, folium.plugins.HeatMap
+## 🚀 Key Features
+
+* **Interactive Microclimate Heatmap:** Dynamic spatial heatmap displaying peak surface temperature anomalies at 2m resolution.
+* **Cool Street Corridors & Waypoints:** Highlights pedestrian pathways with verified tree canopies and active misting hubs.
+* **Heat Vulnerability Index (HVI) Engine:** Quantifies exposure risk using the formula:
+  $$\text{HVI} = \left(0.5 \times \text{Normalized Temp} + 0.3 \times \text{Canopy Deficit} + 0.2 \times \text{Pedestrian Density}\right) \times 100$$
+* **Municipal Dispatch Table:** Real-time prioritization of top high-risk zones with assigned interventions and projected cooling ROI.
+* **Dynamic Simulation Filters:** Real-time threshold adjustment for heat alerts and municipal budget allocation.
 
 ---
 
-## 🚀 Quickstart & Setup
+## 🛠️ Tech Stack & Dependencies
 
-### 1. Clone the Repository
-```bash
-git clone [https://github.com/muzainarehman18-debug/temperature-api-quickstart.git](https://github.com/muzainarehman18-debug/temperature-api-quickstart.git)
-cd temperature-api-quickstart
-pip install -r requirements.txt
-FORTYGUARD_API_KEY=fg_live_your_api_key_here
-jupyter notebook uhi_cooling_planner.ipynb
+* **Frontend / UI:** [Streamlit](https://streamlit.io/)
+* **Geospatial Mapping:** [Folium](https://python-visualization.github.io/folium/) & [streamlit-folium](https://github.com/randyzwitch/streamlit-folium)
+* **Data Processing:** Pandas, NumPy
+* **API Integration:** Requests, Python `os`
+* **Data Source:** FortyGuard Hyperlocal Thermal API (~2m resolution LTM grid)
+
+---
+
+## 📦 Project Structure
+
+```text
+├── app.py                  # Main Streamlit web application & spatial analytics
+├── requirements.txt        # Python package dependencies
+├── README.md               # Project documentation
+└── .env.example            # Environment variable template for API keys
